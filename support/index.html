@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GreenPlayer 技术支持">
+  <link rel="canonical" href="https://akagreen.github.io/greenplayer-support/support/">
+  <title>技术支持 · GreenPlayer</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="../">GreenPlayer</a>
+      <nav aria-label="主要导航">
+        <a href="../privacy/">隐私政策</a>
+        <a aria-current="page" href="./">技术支持</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell document">
+    <p class="eyebrow">SUPPORT</p>
+    <h1>GreenPlayer 技术支持</h1>
+    <p class="document-meta">适用于 GreenPlayer 1.0 · iOS / iPadOS 17+ · macOS 14+</p>
+
+    <aside class="summary">
+      <strong>需要帮助？</strong>
+      <p>先查看下面的快速排查方法。仍有问题时，可在公开支持仓库提交 Issue；TestFlight 测试者也可以直接发送 Beta 反馈。</p>
+      <div class="button-row">
+        <a class="button primary" href="https://github.com/AKAGreen/greenplayer-support/issues/new">提交支持问题</a>
+        <a class="button" href="https://github.com/AKAGreen/greenplayer-support/issues">查看已知问题</a>
+      </div>
+    </aside>
+
+    <section>
+      <h2>提交问题时请提供</h2>
+      <ul>
+        <li>GreenPlayer 版本和构建号；</li>
+        <li>设备型号和系统版本；</li>
+        <li>数据源类型：本地、Jellyfin、Emby、SMB、WebDAV 或 FTP；</li>
+        <li>可重复出现问题的步骤和完整错误提示；</li>
+        <li>不包含个人或服务器敏感信息的截图。</li>
+      </ul>
+      <p class="warning"><strong>请勿公开提交：</strong>密码、访问令牌、私有服务器地址、家庭公网 IP、个人媒体文件、未经授权的海报或字幕。</p>
+    </section>
+
+    <section>
+      <h2>快速排查</h2>
+      <h3>找不到 NAS、媒体服务器或投屏设备</h3>
+      <p>确认手机与设备位于同一局域网，并在系统设置中允许 GreenPlayer 使用本地网络。访客 Wi-Fi、AP 隔离或 VLAN 可能阻止设备互相发现。</p>
+
+      <h3>Jellyfin / Emby / WebDAV 无法连接</h3>
+      <p>检查地址、端口和 HTTPS 证书。通过互联网访问时应使用有效 HTTPS；HTTP、自签名证书和 FTP 只应在您控制且信任的网络中使用。</p>
+
+      <h3>视频无法播放或字幕异常</h3>
+      <p>尝试将播放内核设为“自动”，并记录视频封装、编码及字幕格式。媒体兼容性取决于设备、系统、编码、服务器和网络条件。</p>
+
+      <h3>iCloud 配置没有同步</h3>
+      <p>确认设备已登录同一 Apple 账户、iCloud 钥匙串可用，并在 GreenPlayer 设置中主动开启了 iCloud 配置同步。同步默认关闭。</p>
+    </section>
+
+    <section>
+      <h2>TestFlight 反馈</h2>
+      <p>在 TestFlight 中打开 GreenPlayer，选择“发送 Beta 反馈”；也可以在应用中截屏后选择“共享 Beta 反馈”。TestFlight 会把应用版本、设备和可选截图一并发送给开发者。</p>
+    </section>
+
+    <section>
+      <h2>支持范围</h2>
+      <p>GreenPlayer 是通用播放器，不提供媒体内容、服务器账号或第三方服务支持。Jellyfin、Emby、NAS、路由器和网络服务本身的问题，可能需要联系对应产品或服务器管理员。</p>
+      <p>隐私与数据控制说明请查看 <a href="../privacy/">GreenPlayer 隐私政策</a>。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <span>© 2026 张仁杰 · GreenPlayer</span>
+      <a href="../privacy/">隐私政策</a>
+    </div>
+  </footer>
+</body>
+</html>
