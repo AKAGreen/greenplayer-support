@@ -18,43 +18,28 @@
       </nav>
     </div>
   </header>
-
   <main class="shell document">
     <p class="eyebrow">RELEASE MATERIALS</p>
     <h1>GreenPlayer<br>1.0.0 (1)</h1>
-    <p class="document-meta">MPVKit 1.0.0 · libmpv 0.41.0 · FFmpeg 8.1.2</p>
-
+    <p class="document-meta">与该 App Store/TestFlight 构建精确对应的第三方材料</p>
     <div class="summary">
       <strong>下载内容</strong>
-      <p>55 组精确版本的第三方源码与构建脚本、原始许可与版权声明、构建配置、来源清单以及 SHA-256 校验值。包内不含 GreenPlayer 应用源代码。</p>
+      <p>精确版本的第三方源码与构建脚本、原始许可与版权声明、构建配置、来源清单和 SHA-256 校验值。包内不含 GreenPlayer 应用源代码。</p>
       <div class="button-row">
         <a class="button primary" href="https://github.com/AKAGreen/greenplayer-support/releases/download/oss-1.0.0-1/GreenPlayer-OSS-1.0.0-1.zip">下载源码合规包（ZIP）</a>
         <a class="button" href="https://github.com/AKAGreen/greenplayer-support/releases/download/oss-1.0.0-1/GreenPlayer-OSS-1.0.0-1.zip.sha256">下载 SHA-256</a>
       </div>
     </div>
-
     <section>
-      <h2>版本基线</h2>
-      <dl>
-        <dt>MPVKit</dt><dd>1.0.0，普通 LGPL 产品（不是 MPVKit-GPL）</dd>
-        <dt>libmpv</dt><dd>0.41.0，<code>gpl=false</code></dd>
-        <dt>FFmpeg</dt><dd>8.1.2，启用 version3，未启用 GPL/nonfree</dd>
-        <dt>链接形态</dt><dd>当前 App 二进制为静态链接基线</dd>
-        <dt>应用代码</dt><dd>GreenPlayer 应用源代码不在公开材料内</dd>
-      </dl>
+      <h2>许可与范围</h2>
+      <p>使用普通 LGPL MPVKit 产品，不使用 MPVKit-GPL。各组件仍由原版权所有者按其许可证授权。本页面不对 GreenPlayer 应用代码授予开源许可。</p>
     </section>
-
     <section>
-      <h2>校验与使用</h2>
-      <ol>
-        <li>下载 ZIP 和同名 <code>.sha256</code> 文件。</li>
-        <li>在终端运行 <code>shasum -a 256 GreenPlayer-OSS-1.0.0-1.zip</code>。</li>
-        <li>比对输出与校验文件；解压后还可使用包内 <code>SOURCE-SHA256SUMS.txt</code> 逐项核验源码归档。</li>
-      </ol>
-      <p>如下载或许可材料存在问题，请通过<a href="../../support/">技术支持页</a>联系。</p>
+      <h2>校验</h2>
+      <p>下载后运行 <code>shasum -a 256 GreenPlayer-OSS-1.0.0-1.zip</code>，并与同名 <code>.sha256</code> 文件比较。解压后还可用 <code>SOURCE-SHA256SUMS.txt</code> 逐项核验。</p>
+      <p>如材料存在问题，请通过<a href="../../support/">技术支持页</a>联系。</p>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="shell footer-row">
       <span>© 2026 张仁杰 · GreenPlayer</span>
