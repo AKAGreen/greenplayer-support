@@ -3,80 +3,149 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GreenPlayer 技术支持">
+  <meta name="description" content="GreenPlayer 新手指引与常见问题：添加媒体库、各平台手势与快捷键、DLNA 投屏排障、购买恢复及 iCloud 同步。">
   <link rel="canonical" href="https://akagreen.github.io/greenplayer-support/support/">
-  <title>技术支持 · GreenPlayer</title>
+  <title>新手指引与技术支持 · GreenPlayer</title>
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    html { scroll-padding-top: 88px; }
+    details { margin: 14px 0; border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; background: var(--surface); }
+    summary { padding: 18px 0; cursor: pointer; font-weight: 650; line-height: 1.55; }
+    summary:focus-visible, a:focus-visible, .table-scroll:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    details[open] { padding-bottom: 12px; }
+    details p:first-of-type { margin-top: 0; }
+    .contents { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+    .contents a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); text-decoration: none; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 22px 0; }
+    .steps span { text-align: center; padding: 14px 8px; border-radius: 12px; background: var(--accent-soft); color: var(--text); font-weight: 650; }
+    .steps small { display: block; color: var(--accent-strong); font-size: 1.2rem; }
+    .gesture-map { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 26px 18px; border-radius: 22px; background: #172019; color: #fff; text-align: center; }
+    .gesture-map span { padding: 22px 12px; border-radius: 12px; background: #254c37; }
+    .gesture-map span:nth-child(2) { background: #244253; }
+    .gesture-map small { grid-column: 1 / -1; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .94rem; }
+    th, td { text-align: left; vertical-align: top; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+    th { color: var(--text); } td { color: var(--muted); }
+    th:first-child, td:first-child { width: 42%; }
+    code { overflow-wrap: anywhere; padding: 2px 5px; border-radius: 4px; background: var(--accent-soft); font-size: .9em; }
+    p, li { overflow-wrap: anywhere; }
+    @media (max-width: 480px) { details { padding-inline: 14px; } .steps { grid-template-columns: 1fr; } .gesture-map { padding: 18px 12px; gap: 10px; } th, td { padding: 10px 6px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="shell nav">
-      <a class="brand" href="../">GreenPlayer</a>
-      <nav aria-label="主要导航">
-        <a href="../privacy/">隐私政策</a>
-        <a aria-current="page" href="./">技术支持</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="shell document">
-    <p class="eyebrow">SUPPORT</p>
-    <h1>GreenPlayer 技术支持</h1>
-    <p class="document-meta">适用于 GreenPlayer 1.0 · iOS / iPadOS 17+ · macOS 14+</p>
-
-    <aside class="summary">
-      <strong>需要帮助？</strong>
-      <p>先查看下面的快速排查方法。仍有问题时，可在公开支持仓库提交 Issue；TestFlight 测试者也可以直接发送 Beta 反馈。</p>
-      <div class="button-row">
-        <a class="button primary" href="https://github.com/AKAGreen/greenplayer-support/issues/new">提交支持问题</a>
-        <a class="button" href="https://github.com/AKAGreen/greenplayer-support/issues">查看已知问题</a>
-      </div>
+  <a href="#main" class="button" style="position:absolute;left:-10000px" onfocus="this.style.left='12px'" onblur="this.style.left='-10000px'">跳到正文</a>
+  <header class="site-header"><div class="shell nav">
+    <a class="brand" href="../">GreenPlayer</a>
+    <nav aria-label="主要导航"><a href="../privacy/">隐私政策</a><a aria-current="page" href="./">技术支持</a></nav>
+  </div></header>
+  <main id="main" class="shell document">
+    <p class="eyebrow">GET STARTED &amp; SUPPORT</p>
+    <h1>新手指引与技术支持</h1>
+    <p class="document-meta">适用于 GreenPlayer 1.1 · iOS / iPadOS 17+ · macOS 14+<br>更新于 2026 年 10 月 4 日 · App 内入口以所安装版本为准</p>
+    <aside class="summary"><strong>从添加媒体库到第一次播放</strong>
+      <p>选择自己的媒体来源，完成添加，然后选片播放。播放操作可按客户端查看。</p>
+      <div class="steps" aria-label="添加流程"><span><small>1 ＋</small>选择来源</span><span><small>2 ▣</small>完成添加</span><span><small>3 ▶</small>选片播放</span></div>
+      <div class="button-row"><a class="button primary" href="#adding">添加媒体库</a><a class="button" href="#controls">手势与快捷键</a></div>
     </aside>
-
-    <section>
-      <h2>提交问题时请提供</h2>
-      <ul>
-        <li>GreenPlayer 版本和构建号；</li>
-        <li>设备型号和系统版本；</li>
-        <li>数据源类型：本地、Jellyfin、Emby、SMB、WebDAV 或 FTP；</li>
-        <li>可重复出现问题的步骤和完整错误提示；</li>
-        <li>不包含个人或服务器敏感信息的截图。</li>
-      </ul>
-      <p class="warning"><strong>请勿公开提交：</strong>密码、访问令牌、私有服务器地址、家庭公网 IP、个人媒体文件、未经授权的海报或字幕。</p>
-    </section>
-
-    <section>
-      <h2>快速排查</h2>
-      <h3>找不到 NAS、媒体服务器或投屏设备</h3>
-      <p>确认手机与设备位于同一局域网，并在系统设置中允许 GreenPlayer 使用本地网络。访客 Wi-Fi、AP 隔离或 VLAN 可能阻止设备互相发现。</p>
-
-      <h3>Jellyfin / Emby / WebDAV 无法连接</h3>
-      <p>检查地址、端口和 HTTPS 证书。通过互联网访问时应使用有效 HTTPS；HTTP、自签名证书和 FTP 只应在您控制且信任的网络中使用。</p>
-
-      <h3>视频无法播放或字幕异常</h3>
-      <p>尝试将播放内核设为“自动”，并记录视频封装、编码及字幕格式。媒体兼容性取决于设备、系统、编码、服务器和网络条件。</p>
-
-      <h3>iCloud 配置没有同步</h3>
-      <p>确认设备已登录同一 Apple 账户、iCloud 钥匙串可用，并在 GreenPlayer 设置中主动开启了 iCloud 配置同步。同步默认关闭。</p>
-    </section>
-
-    <section>
-      <h2>TestFlight 反馈</h2>
-      <p>在 TestFlight 中打开 GreenPlayer，选择“发送 Beta 反馈”；也可以在应用中截屏后选择“共享 Beta 反馈”。TestFlight 会把应用版本、设备和可选截图一并发送给开发者。</p>
-    </section>
-
-    <section>
-      <h2>支持范围</h2>
-      <p>GreenPlayer 是通用播放器，不提供媒体内容、服务器账号或第三方服务支持。Jellyfin、Emby、NAS、路由器和网络服务本身的问题，可能需要联系对应产品或服务器管理员。</p>
-      <p>隐私与数据控制说明请查看 <a href="../privacy/">GreenPlayer 隐私政策</a>。</p>
-    </section>
+    <nav class="contents" aria-label="支持页目录"><a href="#adding">添加媒体库</a><a href="#controls">播放操作</a><a href="#faq">常见问题与投屏</a><a href="#purchase">购买与恢复</a><a href="#updates">更新与建议</a><a href="#feedback">问题反馈</a></nav>
+<section id="adding"><h2>新手指引：添加媒体库</h2>
+<p>GreenPlayer 播放您选择的媒体文件或服务器内容。请先准备自己的视频文件，或有权访问的服务器。</p>
+<p>在“设置 → 关于 GreenPlayer → 新手指引”可随时重看教程；媒体库空白页有“查看添加教程”，播放器顶部的问号按钮提供操作说明。旧版没有这些入口时，可按下面的步骤操作。</p>
+<details open><summary>本机或 iCloud Drive 文件夹</summary>
+<ol><li>在媒体库顶部点击 <strong>＋ → 添加本地文件夹</strong>。</li><li>在系统文件选择器中选择文件夹并确认授权，再点击“添加”。iCloud Drive 文件可能需要先下载。</li><li>回到媒体库，打开刚添加的文件夹，点击视频文件开始播放。</li></ol>
+</details>
+<details><summary>Jellyfin / Emby</summary>
+<ol><li>在媒体库顶部点击 <strong>＋</strong>，根据服务器选择 Jellyfin 或 Emby。</li><li>填写主机、端口、协议和服务器账号，点击“连接”。这是媒体服务器的账号，GreenPlayer 不需要注册账号。</li><li>打开刚添加的服务器，点击影片海报，在详情页点击“播放”；剧集可先选择一集。</li></ol>
+<p>示例地址 <code>http://192.168.1.20:8096</code>：主机填 <code>192.168.1.20</code>，端口填 <code>8096</code>，协议选 HTTP。主机不包含协议、端口或路径；若地址末尾有 <code>/jellyfin</code> 等路径，请单独填写“路径”，否则留空。端口以实际服务器设置为准。跨互联网连接请使用 HTTPS。</p>
+</details>
+<details><summary>NAS / 网络共享</summary>
+<ol><li>在媒体库顶部点击 <strong>＋</strong>，根据 NAS 已开启的服务选择 SMB、WebDAV 或 FTP。</li><li>填写域名或 IP、服务端口、共享名称或目录路径，以及有访问权限的账号，点击“添加”。</li><li>打开刚添加的来源，进入视频所在目录，点击文件播放。</li></ol>
+<p>示例 <code>smb://192.168.1.20/Movies</code>：主机填 <code>192.168.1.20</code>，端口通常为 <code>445</code>，共享名称填 <code>Movies</code>。共享名称留空时会先列出可访问的共享。WebDAV 的目录路径由服务提供方指定；FTP 请在可信网络中使用。</p>
+</details>
+</section>
+<section id="controls"><h2>新手指引：手势与快捷键</h2><div class="gesture-map" role="img" aria-label="手机和平板画面左侧上下滑动调亮度，右侧上下滑动调音量，左右滑动调进度"><span>↕ 左侧<br>屏幕亮度</span><span>↕ 右侧<br>播放音量</span><small>← 后退 · 左右滑动调整进度 · 前进 →</small></div>
+<details><summary>iPhone / iPad</summary>
+<div class="table-scroll" tabindex="0" role="region" aria-label="操作说明"><table><thead><tr><th scope="col">操作</th><th scope="col">功能</th></tr></thead><tbody>
+<tr><td>单击画面</td><td>显示或隐藏控制栏</td></tr>
+<tr><td>双击画面</td><td>播放或暂停</td></tr>
+<tr><td>单指或双指左右滑动</td><td>调整进度；向右前进，向左后退</td></tr>
+<tr><td>画面左侧上下滑动</td><td>调整屏幕亮度；向上增加，向下减少</td></tr>
+<tr><td>画面右侧上下滑动</td><td>调整音量；向上增加，向下减少</td></tr>
+<tr><td>长按画面左侧 / 右侧</td><td>持续快退 / 快进扫描，松手结束</td></tr>
+</tbody></table></div>
+<p>请在画面中部操作，避开顶部、底部按钮和中央分界处。长按扫描用于快速移动播放位置；正常播放速度请通过倍速菜单调整。</p>
+<p>iPad 外接键盘可用空格播放或暂停，左右方向键按设置的跳转间隔后退或前进。请保持播放器位于前台，且未在输入框中编辑文字。</p>
+</details>
+<details><summary>Mac</summary>
+<div class="table-scroll" tabindex="0" role="region" aria-label="操作说明"><table><thead><tr><th scope="col">操作</th><th scope="col">功能</th></tr></thead><tbody>
+<tr><td>空格</td><td>播放或暂停</td></tr>
+<tr><td>← / →</td><td>后退或前进，秒数跟随“设置 → 跳转间隔”</td></tr>
+<tr><td>↑ / ↓</td><td>增大或减小音量</td></tr>
+<tr><td>Esc</td><td>关闭播放；有帮助弹窗时先关闭弹窗</td></tr>
+<tr><td>单击画面</td><td>显示或隐藏控制栏</td></tr>
+<tr><td>双击画面</td><td>进入或退出全屏</td></tr>
+<tr><td>触控板双指左右滑动</td><td>调整进度；向右前进，向左后退</td></tr>
+<tr><td>触控板双指上下滑动</td><td>调整音量；向上增加，向下减少</td></tr>
+</tbody></table></div>
+<p>触控板操作时请将指针放在播放器窗口内。这些手势与快捷键用于 App 内播放；投屏时请使用投屏遥控界面的可用控制。</p>
+</details>
+</section>
+<section id="faq"><h2>常见问题</h2>
+<details><summary>连接失败、找不到 NAS 或服务器怎么办？</summary>
+<p>先确认主机、端口、协议、路径和账号正确，服务器已开机且服务已启用。局域网连接需设备之间网络互通，并允许 GreenPlayer 使用本地网络。访客 Wi-Fi、AP 隔离、VPN 或 VLAN 规则可能阻止访问。跨互联网连接需由您或管理员正确配置访问地址和有效 HTTPS 证书。</p>
+</details>
+<details><summary>连接成功后，媒体库为空怎么办？</summary>
+<p>确认服务器中已添加媒体库并完成扫描，且当前账号有权访问该媒体库。文件来源则检查共享名称、目录路径和账号权限。加密来源可能被隐藏，点击媒体库顶部锁按钮并完成身份验证后查看；Jellyfin / Emby 内容可使用刷新按钮重新加载。</p>
+</details>
+<details><summary>如何投屏？为什么没有投屏按钮？</summary>
+<p>当前支持 Jellyfin / Emby 媒体服务器内容的 DLNA 投屏。播放影片后，点击播放器顶部电视图标，选择同一局域网内已启用 DLNA 接收功能的设备。投屏后使用遥控界面播放、暂停、拖动进度或停止；控制能力取决于接收设备。</p>
+<p>本地文件夹、SMB、WebDAV 和 FTP 来源目前没有 DLNA 投屏入口；应用没有将这些文件转发给电视的本地媒体服务。当前投屏入口用于 DLNA，不包含 AirPlay 或 Chromecast 协议。</p>
+</details>
+<details><summary>找不到电视怎么办？</summary>
+<p>确认电视与手机、平板或 Mac 在同一局域网，电视已开启 DLNA 接收，并已允许 GreenPlayer 使用本地网络。检查路由器是否限制组播或设备互访。电视有线连接、手机无线连接也可以，只要路由器允许它们相互发现和访问。</p>
+</details>
+<details><summary>手机上能播放，投屏后为什么黑屏、无声或字幕缺失？</summary>
+<p>DLNA 投屏时，接收设备直接读取媒体地址并负责解码，手机的播放内核不会替电视解码。电视可能不支持视频编码、音轨、字幕格式或媒体封装；电视也必须能访问服务器地址，不能依赖只有手机能用的 VPN、请求头或登录方式。</p>
+<p>尝试更换音轨、字幕或使用常见的 H.264/AAC MP4 文件确认设备能力。Jellyfin / Emby 服务端转换需要服务器和账号允许；转码能否解决还取决于服务器生成的流和电视支持范围。App 内兼容内核或外挂字幕的本机渲染能力不会自动转移到电视。</p>
+</details>
+<details><summary>投屏画面拉伸、黑边、颜色或进度显示异常怎么办？</summary>
+<p>画面比例与颜色受视频本身、电视显示设置、HDR 支持和服务器输出影响。先检查电视的画面比例设置，关闭强制拉伸，并用普通 SDR 视频对照；原片自带黑边可能属于正常画面。</p>
+<p>部分 DLNA 接收设备不能完整上报播放状态、时长或进度，遥控界面可能延迟，拖动也可能不可用。App 内画面比例设置不会直接改变电视画面。反馈时请提供电视型号、服务器类型、编码信息和具体异常表现。</p>
+</details>
+<details><summary>视频无法播放、卡顿或字幕异常怎么办？</summary>
+<p>先在设置中将播放内核设为“自动”，检查网络速度和服务器负载。Jellyfin / Emby 可尝试较低清晰度；是否可以切换取决于服务器提供的播放方案和账号权限。字幕或音轨异常时，从播放器菜单选择其他轨道。反馈时请注明封装、视频/音频编码、字幕格式和具体表现。</p>
+</details>
+<details><summary>iCloud 会同步视频和观看进度吗？</summary>
+<p>新安装时 iCloud 配置同步默认开启，可以在设置中关闭。同步的是加密的连接配置和相关偏好，不上传视频文件，也不通过这项功能同步观看历史。Jellyfin / Emby 观看进度由媒体服务器记录。本地文件夹在另一台设备上可能需要重新授权访问。</p>
+<p>配置未同步时，请检查设备是否登录同一 Apple 账户、iCloud 钥匙串是否可用，以及设置中的同步状态。Apple 账户变化后，按应用提示确认当前账户。购买权益由 App Store 购买账户决定，与配置同步分开。</p>
+</details>
+</section>
+<section id="updates"><h2>后续更新与功能建议</h2>
+<p>正式版本通过 App Store 更新，测试版本通过 TestFlight 更新；Mac 其他分发版本请通过原下载渠道查看更新说明。</p>
+<p>后续改进方向包括媒体兼容性、字幕体验、播放与投屏稳定性，以及媒体库易用性。Apple TV 版尚未推出，Plex、第三方网盘和自动刮削也尚未提供；功能及支持范围以实际发布说明为准，不承诺未确定的上线日期。</p>
+<p>提交功能建议时，请说明使用的设备、媒体来源、想完成的操作，以及目前遇到的障碍；优先描述使用场景。可通过“设置 → 帮助与反馈”选择功能建议，或在公开支持仓库提交整理后的需求。</p>
+</section>
+<section id="feedback"><h2>问题反馈</h2>
+<p>反馈问题时，请提供：</p>
+<ul><li>GreenPlayer 版本和构建号；</li><li>设备型号和系统版本；</li><li>数据源类型（本地、Jellyfin、Emby、SMB、WebDAV 或 FTP）；</li><li>可复现步骤和错误提示；</li><li>不包含密码、访问令牌、私有服务器地址或个人媒体内容的截图。</li></ul>
+<p>推荐通过“设置 → 帮助与反馈”填写问题说明，准备反馈后使用邮件发送至 <strong>greenplayer_app@163.com</strong>。问题反馈可以附带脱敏诊断日志，功能建议默认不附带日志。</p>
+<p>没有配置系统邮件时，可保存反馈 ZIP 包、复制反馈内容和邮箱，再使用常用邮箱发送。反馈包中的编号用于后续沟通，请保留。邮件应用负责实际发送，GreenPlayer 无法确认邮件最终收件。</p>
+<p>日志默认保存最近 3 天且最多 10 MB；默认导出最近 30 分钟，可扩大到 2 小时、24 小时或 3 天。遇到问题后请尽快提交，并检查所选日志范围覆盖问题发生时间。若需要重新复现，可先开启“详细诊断（15 分钟）”。应用不会自动上传日志。</p>
+<p>公开问题入口：<a href="https://github.com/AKAGreen/greenplayer-support/issues/new">https://github.com/AKAGreen/greenplayer-support/issues/new</a>。请仅发布整理后的问题描述，不要上传原始反馈包或个人截图。</p>
+<p>TestFlight 测试者也可以在 TestFlight 中截屏并选择“共享 Beta 反馈”。</p>
+<p>如果 iCloud 配置未同步，请确认设备已登录同一 Apple 账户，并查看 GreenPlayer 设置中的同步状态。新安装时同步默认开启，您可以随时关闭。</p>
+<p>不要公开发送密码、令牌或服务器地址。TestFlight 的 Feedback Email 仍需在 App Store Connect 中填写一个可实际收件的邮箱，该邮箱不必展示在本公开页面。</p>
+</section>
+<section id="purchase"><h2>购买与恢复</h2>
+<p>永久解锁为一次性购买，无自动续费。换设备或重装后请使用原 App Store 购买账户；软件自动检查权益，必要时在设置或购买页点击“恢复购买”。iCloud 配置同步不决定购买权益。</p>
+<p>每台设备有 20 次播放体验，成功播放累计达到 10 秒计一次。朋友体验组 TestFlight Beta 构建免费开放全部功能，测试资格不转移至正式版。Apple TV 版尚未推出，未来通用购买版使用同一商品恢复权益。</p>
+<p>购买或恢复首次操作需要连接 App Store。无法加载价格时请检查网络并重试。请勿在公开问题中发布完整购买凭证或交易编号；客服如需核对，应通过私下渠道提供必要信息。</p>
+<p>备案号：<a href="https://beian.miit.gov.cn/">渝ICP备2026023426号-1A</a></p>
+</section>
+    <section><h2>支持范围</h2><p>GreenPlayer 不提供媒体内容、服务器账号或第三方服务支持。Jellyfin、Emby、NAS 和网络服务本身的问题，可能需要联系对应服务器管理员。</p><p>隐私与数据控制说明请查看 <a href="../privacy/">隐私政策</a>。</p></section>
   </main>
-
-  <footer class="site-footer">
-    <div class="shell footer-row">
-      <span>© 2026 张仁杰 · GreenPlayer</span>
-      <a href="../privacy/">隐私政策</a>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="shell footer-row"><span>© 2026 张仁杰 · GreenPlayer</span><a href="https://beian.miit.gov.cn/">渝ICP备2026023426号-1A</a><a href="../privacy/">隐私政策</a></div></footer>
 </body>
 </html>
